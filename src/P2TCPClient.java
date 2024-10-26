@@ -30,9 +30,17 @@ public class P2TCPClient {
                     String filename=bufferedReader.readLine();
 
                     try(FileOutputStream fileOutputStream=new FileOutputStream("P2TCP"+filename)){
-
+                        while((bytesRead=inputStream.read(buffer))!=-1)
+                            fileOutputStream.write(buffer,0,bytesRead);
                     }
+                    System.out.println(bufferedReader.readLine());
+                } else if (response.equalsIgnoreCase("no")) {
+                    System.out.println(bufferedReader.readLine());
+                } else {
+                    System.out.println(bufferedReader.readLine());
                 }
+            } else {
+                System.out.println(bufferedReader.readLine());
             }
         } catch (IOException e){
             System.err.println("An error occurred : " +e.getMessage());
